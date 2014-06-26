@@ -9,13 +9,14 @@
 #import <Foundation/Foundation.h>
 #import "SeasonRankings.h"
 
+#define MAX_CHAR_SIZE 1024
 
 int main(int argc, const char * argv[])
 {
 
     @autoreleasepool {
         
-        char str[100] = ""; bool pathFound = false; bool exitApp = false;
+        char str[MAX_CHAR_SIZE] = ""; bool pathFound = false; bool exitApp = false;
         SeasonRankings *season;
         
         while (!exitApp) {
@@ -26,33 +27,38 @@ int main(int argc, const char * argv[])
                 season = [[SeasonRankings alloc] init];
                 
                 printf("Enter input file path: \n");
-                fgets(str, 100, stdin);
+                fgets(str, MAX_CHAR_SIZE, stdin);
                 printf("looking for file at:\n\t%s\n",str);
-                if ( [season processGamesFromPathString:[NSString stringWithUTF8String:str]]) {
+                if ( [season didProcessGamesFromPathString:[NSString stringWithUTF8String:str]]) {
+                    
+                    printf("===========SUCCESS!===========\n\n");
                     pathFound = true;
                 } else {
                     printf("There was an error with that file or filepath, please check again \n\n");
                 }
             }
             
+            //calculate the rankings...
+            [season calculateRankings];
+            
             //ask to print to log
             printf("would you like me to print results (Y/N)?");
-            fgets(printYesNo, 100, stdin);
+            fgets(printYesNo, 3, stdin);
             if (printYesNo[0] == 'Y' || printYesNo[0] == 'y') {
-                [season printGameResults];
+                [season printSeasonRankings];
             } else if (printYesNo[0] != 'N' && printYesNo[0] != 'n') {
                 printf("huh?");
             }
             
             //ask to save to file
             printf("would you like me to save results (Y/N)?");
-            fgets(saveYesNo, 100, stdin);
+            fgets(saveYesNo, 3, stdin);
             if (saveYesNo[0] == 'Y' || saveYesNo[0] == 'y') {
-                char savePath[100] = "";
+                char savePath[MAX_CHAR_SIZE] = "";
                 printf("Where would you like me to save it?");
-                fgets(savePath, 100, stdin);
+                fgets(savePath, MAX_CHAR_SIZE, stdin);
                 
-                if ([season saveGameResultsToFile:[NSString stringWithUTF8String:savePath]]) {
+                if ([season saveRankingsToFile:[NSString stringWithUTF8String:savePath]]) {
                     printf("Success!");
                 } else {
                     printf("uh oh... There was an error writing to that path...");
@@ -63,7 +69,7 @@ int main(int argc, const char * argv[])
             
             //ask to quit
             printf("\nWant to Quit (Y (for yes)/ N (for no) / R (read new file))?");
-            fgets(leave, 100, stdin);
+            fgets(leave, 3, stdin);
             if (leave[0] == 'Y' || leave[0] == 'y') {
                 exitApp = true;
             } else if (leave[0] == 'R' || leave[0] == 'r') {

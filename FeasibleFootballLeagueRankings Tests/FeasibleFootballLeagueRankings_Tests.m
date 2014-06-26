@@ -9,6 +9,7 @@
 #import <XCTest/XCTest.h>
 #import "Team.h"
 #import "Game.h"
+#import "SeasonRankings.h"
 
 __attribute__((visibility("default"))) @interface FeasibleFootballLeagueRankings_Tests : XCTestCase
 
@@ -181,6 +182,20 @@ __attribute__((visibility("default"))) @interface FeasibleFootballLeagueRankings
     XCTAssertTrue([self.teamA currentRankedScore] == [self.teamB currentRankedScore], @"teams that were tied before a tie result should still be tied");
     XCTAssert(preThirdMatchHomeScore + 1 == [self.teamA currentRankedScore], @"a tie should add only 1 score to home team");
     XCTAssert(preThirdMatchAwayScore + 1 == [self.teamB currentRankedScore], @"a tie should add only 1 score to away team");
+}
+
+- (void)testSeasonRankingsSetup
+{
+    SeasonRankings *season = [[SeasonRankings alloc] init];
+    XCTAssertNotNil(season, @"creating instance of season does not create nil instance");
+    
+    //test for no input string to process games
+    BOOL failedRead = [season didProcessGamesFromPathString:@""];
+    XCTAssertFalse(failedRead, @"season should return false if processing Games from pathstring failed");
+    
+    NSString* testPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"SampleInput" ofType:@"txt"];
+    BOOL trueRead = [season didProcessGamesFromPathString:testPath];
+    XCTAssertTrue(trueRead, @"season should return true if file path has expected file");
 }
 
 @end

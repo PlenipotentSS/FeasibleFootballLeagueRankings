@@ -39,6 +39,8 @@
     return self;
 }
 
+// takes the score from home and away teams
+// return the result as enum
 - (GameResult)inputGameResultWithHomeScore:(NSInteger)homeScore andAwayScore:(NSInteger)awayScore
 {
     GameResult result;
@@ -55,6 +57,8 @@
     return result;
 }
 
+// takes the score from home and away teams  and updates those teams (respectively)
+// returns the result as enum
 - (GameResult)updateGameTeamsAndGetResultWithHomeScore:(NSInteger)homeScore andAwayScore:(NSInteger)awayScore
 {
     GameResult result;

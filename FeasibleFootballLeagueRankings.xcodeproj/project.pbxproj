@@ -19,6 +19,7 @@
 		D2ECF088195CA8F50047C831 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = D2ECF087195CA8F50047C831 /* Game.m */; };
 		D2ECF089195CAE6C0047C831 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = D2ECF087195CA8F50047C831 /* Game.m */; };
 		D2ECF08A195CAE740047C831 /* SeasonRankings.m in Sources */ = {isa = PBXBuildFile; fileRef = D2ECF084195CA83A0047C831 /* SeasonRankings.m */; };
+		D2ECF08C195CD2D20047C831 /* SampleInput.txt in Resources */ = {isa = PBXBuildFile; fileRef = D2ECF08B195CCC100047C831 /* SampleInput.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		D2ECF084195CA83A0047C831 /* SeasonRankings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeasonRankings.m; sourceTree = "<group>"; };
 		D2ECF086195CA8F50047C831 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
 		D2ECF087195CA8F50047C831 /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
+		D2ECF08B195CCC100047C831 /* SampleInput.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SampleInput.txt; path = FeasibleFootballLeagueRankings/inputs/SampleInput.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 		D2ECF00D195C96860047C831 = {
 			isa = PBXGroup;
 			children = (
+				D2ECF08B195CCC100047C831 /* SampleInput.txt */,
 				D2ECF01B195C96860047C831 /* FeasibleFootballLeagueRankings */,
 				D2ECF071195C9D200047C831 /* FeasibleFootballLeagueRankings Tests */,
 				D2ECF018195C96860047C831 /* Frameworks */,
@@ -265,6 +268,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2ECF076195C9D200047C831 /* InfoPlist.strings in Resources */,
+				D2ECF08C195CD2D20047C831 /* SampleInput.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,6 +468,7 @@
 				D2ECF026195C96860047C831 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D2ECF07C195C9D200047C831 /* Build configuration list for PBXNativeTarget "FeasibleFootballLeagueRankings Tests" */ = {
 			isa = XCConfigurationList;
@@ -472,6 +477,7 @@
 				D2ECF07E195C9D200047C831 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
