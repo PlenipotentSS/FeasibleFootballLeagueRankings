@@ -23,8 +23,6 @@
 {
     self = [super init];
     if (self) {
-        _homeTeam = [Team new];
-        _awayTeam = [Team new];
         _homeScore = 0;
         _awayScore = 0;
     }
@@ -52,6 +50,37 @@
         result = GameResultAwayTeamWon;
     }
     
+    self.gameResult = result;
+    
+    return result;
+}
+
+- (GameResult)updateGameTeamsAndGetResultWithHomeScore:(NSInteger)homeScore andAwayScore:(NSInteger)awayScore
+{
+    GameResult result;
+    if (!self.gameResult && self.homeTeam && self.awayTeam) {
+        result = [self inputGameResultWithHomeScore:homeScore andAwayScore:awayScore];
+        switch (result) {
+            case GameResultHomeTeamWon:
+                self.homeTeam.gamesWon++;
+                self.awayTeam.gamesLost++;
+                break;
+                
+            case GameResultAwayTeamWon:
+                self.homeTeam.gamesLost++;
+                self.awayTeam.gamesWon++;
+                break;
+            
+                
+            case GameResultGameTied:
+                self.homeTeam.gamesTied++;
+                self.awayTeam.gamesTied++;
+                break;
+                
+            default:
+                break;
+        }
+    }
     return result;
 }
 

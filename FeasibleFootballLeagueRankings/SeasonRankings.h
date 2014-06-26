@@ -10,6 +10,10 @@
 
 @interface SeasonRankings : NSObject
 
-- (void)processGamesFromPathString:(NSString*)pathString;
+- (BOOL)processGamesFromPathString:(NSString*)pathString;
+
+- (void)printGameResults;
+
+- (BOOL)saveGameResultsToFile:(NSString*)savedPathString;
 
 @end

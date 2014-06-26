@@ -29,9 +29,19 @@
     return self;
 }
 
-- (void)processGamesFromPathString:(NSString *)pathString
+- (BOOL)processGamesFromPathString:(NSString *)pathString
+{
+    return NO;
+}
+
+- (void)printGameResults
 {
     
+}
+
+- (BOOL)saveGameResultsToFile:(NSString *)savedPathString
+{
+    return NO;
 }
 
 @end

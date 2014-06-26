@@ -26,6 +26,6 @@
 -(instancetype)initWithName:(NSString*)name;
 
 ///computed score for team
-- (NSInteger)currentScore;
+- (NSInteger)currentRankedScore;
 
 @end

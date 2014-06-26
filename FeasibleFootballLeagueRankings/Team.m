@@ -34,7 +34,7 @@
 /*
  * Score = 2 * NUM_WINS + NUM_TIES
  */
-- (NSInteger)currentScore
+- (NSInteger)currentRankedScore
 {
     return 2*self.gamesWon + self.gamesTied;
 }
