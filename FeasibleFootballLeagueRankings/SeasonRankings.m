@@ -34,6 +34,9 @@
     return self;
 }
 
+// process the game from path string.
+// returns if error provided by reading contents of file.
+//      File Handling: does not compute empty lines in file
 - (BOOL)didProcessGamesFromPathString:(NSString *)pathString
 {
     pathString = [pathString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
@@ -94,16 +97,19 @@
     }
 }
 
+// return total teams in season
 - (NSInteger)totalTeams
 {
     return [[self.teams allKeys] count];
 }
 
+// returns total rankings after computed, 0 otherwise
 - (NSInteger)totalRankings
 {
     return [self.currentRankings count];
 }
 
+// calculate rankings using an insertion sort
 - (void)calculateRankings
 {
     _currentRankings = [[NSMutableArray alloc] init];
@@ -137,6 +143,7 @@
     }
 }
 
+// get current seasons rankings in a terminal friendly char*
 - (char*)getSeasonRankings
 {
     NSString *result = [self getResultsInString];
@@ -147,6 +154,7 @@
     return strcpy(cString, result.UTF8String);
 }
 
+// save current rankings to file at savedPathString
 - (BOOL)saveRankingsToFile:(NSString *)savedPathString
 {
     NSString *result = [self getResultsInString];

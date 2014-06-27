@@ -42,7 +42,7 @@ __attribute__((visibility("default"))) @interface FeasibleFootballLeagueRankings
     [super tearDown];
 }
 
-/// Basic team setup
+/// Test Basic Team Setup
 - (void)testBasicTeamSetup
 {
     Team *aTeam = [Team new];
@@ -67,7 +67,7 @@ __attribute__((visibility("default"))) @interface FeasibleFootballLeagueRankings
     XCTAssertNotEqual([aTeam currentRankedScore], [self.teamA currentRankedScore], @"comparing team with score and no score should not have the same current score");
 }
 
-/// Team models can be compared together and report appropriate information
+/// Test Basic Team Comparisons and Expected Values
 - (void)testTeamComparisons
 {
 
@@ -97,7 +97,7 @@ __attribute__((visibility("default"))) @interface FeasibleFootballLeagueRankings
     XCTAssertEqual([self.teamA currentRankedScore], [self.teamB currentRankedScore], @"increasing games lost should not affect team score");
 }
 
-/// All game results are different from each other
+/// Test All Game Result States are different from each other
 - (void)testGameResultsStates
 {
     XCTAssertFalse(GameResultAwayTeamWon == GameResultHomeTeamWon, @"Game results of Home Win and Away Win should not be equal");
@@ -105,7 +105,7 @@ __attribute__((visibility("default"))) @interface FeasibleFootballLeagueRankings
     XCTAssertFalse(GameResultAwayTeamWon == GameResultGameTied, @"Away Team Win and Tie are not the same game result");
 }
 
-/// Basic game setup
+/// Test Basic Game Setup
 - (void)testGameSetup
 {
     Game *firstMatch = [[Game alloc] initWithHomeTeam:self.teamA andAwayTeam:self.teamB];
@@ -115,7 +115,7 @@ __attribute__((visibility("default"))) @interface FeasibleFootballLeagueRankings
     XCTAssertNotNil(firstMatch.awayTeam, @"away team should not be nil");
 }
 
-/// Game results are returned as expected
+/// Testing Games with Results only, without updating team stats
 - (void)testGamesWithJustResults
 {
     
@@ -144,7 +144,7 @@ __attribute__((visibility("default"))) @interface FeasibleFootballLeagueRankings
     XCTAssertTrue(firstMatch.gameResult == GameResultGameTied, @"Game results should have Tie");
 }
 
-/// Game can update team ranking scores referenced in the game results
+/// Test Game can update team ranking scores referenced in the game results
 - (void)testGamesWithResultsAndUpdatingTeams
 {
     //test when home team wins first game and both teams are updated
@@ -184,6 +184,7 @@ __attribute__((visibility("default"))) @interface FeasibleFootballLeagueRankings
     XCTAssert(preThirdMatchAwayScore + 1 == [self.teamB currentRankedScore], @"a tie should add only 1 score to away team");
 }
 
+/// Test Season Rankings Setup
 - (void)testSeasonRankingsSetup
 {
     SeasonRankings *season = [[SeasonRankings alloc] init];
@@ -198,6 +199,7 @@ __attribute__((visibility("default"))) @interface FeasibleFootballLeagueRankings
     XCTAssertTrue(trueRead, @"season should return true if file path has expected file");
 }
 
+/// Test different inputs for ranking updates
 - (void)testRankingsWithDifferentLists
 {
     NSString* testPath1 = [[NSBundle bundleForClass:[self class]] pathForResource:@"SmallSampleData" ofType:@"txt"];
@@ -210,10 +212,14 @@ __attribute__((visibility("default"))) @interface FeasibleFootballLeagueRankings
     [self testRankingsWithPath:testPath3];
 }
 
+/// Testing files at a given path, and ensure process is accurate
 - (void)testRankingsWithPath:(NSString*)path
 {
     SeasonRankings *season = [[SeasonRankings alloc] init];
     
+    XCTAssertEqual([season totalTeams], 0, @"Total teams should be 0 after initalization");
+    
+    // file was successfully read from bundle
     BOOL trueRead = [season didProcessGamesFromPathString:path];
     XCTAssertTrue(trueRead, @"season should return true if file path has expected file");
     XCTAssertNotEqual([season totalTeams], 0, @"Total teams should not be 0 after processing file");
@@ -228,6 +234,7 @@ __attribute__((visibility("default"))) @interface FeasibleFootballLeagueRankings
     XCTAssertFalse(strlen(postResults) == 0, @"results of rankings should not be nil after updating games");
     XCTAssertTrue([season totalRankings] == [season totalTeams], @"total rankings after getting rankings should be same as number of teams");
     
+    // Saving File was successful
     NSString *savePath = @"savingTestFile.txt";
     BOOL trueWrite = [season saveRankingsToFile:savePath];
     XCTAssertTrue(trueWrite, @"rankings should be able to write to file");
