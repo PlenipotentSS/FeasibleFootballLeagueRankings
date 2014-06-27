@@ -21,6 +21,7 @@
     return self;
 }
 
+// Convenience Initializer for Team Name
 -(instancetype)initWithName:(NSString*)name
 {
     self = [self init];
@@ -32,11 +33,11 @@
 
 
 /*
- * Score = 2 * NUM_WINS + NUM_TIES
+ * Score = 3 * NUM_WINS + NUM_TIES
  */
 - (NSInteger)currentRankedScore
 {
-    return 2*self.gamesWon + self.gamesTied;
+    return 3*self.gamesWon + self.gamesTied;
 }
 
 @end

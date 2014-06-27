@@ -20,6 +20,8 @@
 		D2ECF089195CAE6C0047C831 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = D2ECF087195CA8F50047C831 /* Game.m */; };
 		D2ECF08A195CAE740047C831 /* SeasonRankings.m in Sources */ = {isa = PBXBuildFile; fileRef = D2ECF084195CA83A0047C831 /* SeasonRankings.m */; };
 		D2ECF08C195CD2D20047C831 /* SampleInput.txt in Resources */ = {isa = PBXBuildFile; fileRef = D2ECF08B195CCC100047C831 /* SampleInput.txt */; };
+		D2ECF092195D441F0047C831 /* SmallSampleData.txt in Resources */ = {isa = PBXBuildFile; fileRef = D2ECF091195D3F560047C831 /* SmallSampleData.txt */; };
+		D2ECF093195D44230047C831 /* BigSampleInput.txt in Resources */ = {isa = PBXBuildFile; fileRef = D2ECF090195D3E0B0047C831 /* BigSampleInput.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +71,8 @@
 		D2ECF086195CA8F50047C831 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
 		D2ECF087195CA8F50047C831 /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
 		D2ECF08B195CCC100047C831 /* SampleInput.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SampleInput.txt; path = FeasibleFootballLeagueRankings/inputs/SampleInput.txt; sourceTree = "<group>"; };
+		D2ECF090195D3E0B0047C831 /* BigSampleInput.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = BigSampleInput.txt; path = FeasibleFootballLeagueRankings/inputs/BigSampleInput.txt; sourceTree = "<group>"; };
+		D2ECF091195D3F560047C831 /* SmallSampleData.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SmallSampleData.txt; path = FeasibleFootballLeagueRankings/inputs/SmallSampleData.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +99,8 @@
 			isa = PBXGroup;
 			children = (
 				D2ECF08B195CCC100047C831 /* SampleInput.txt */,
+				D2ECF091195D3F560047C831 /* SmallSampleData.txt */,
+				D2ECF090195D3E0B0047C831 /* BigSampleInput.txt */,
 				D2ECF01B195C96860047C831 /* FeasibleFootballLeagueRankings */,
 				D2ECF071195C9D200047C831 /* FeasibleFootballLeagueRankings Tests */,
 				D2ECF018195C96860047C831 /* Frameworks */,
@@ -267,8 +273,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2ECF076195C9D200047C831 /* InfoPlist.strings in Resources */,
+				D2ECF093195D44230047C831 /* BigSampleInput.txt in Resources */,
+				D2ECF092195D441F0047C831 /* SmallSampleData.txt in Resources */,
 				D2ECF08C195CD2D20047C831 /* SampleInput.txt in Resources */,
+				D2ECF076195C9D200047C831 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

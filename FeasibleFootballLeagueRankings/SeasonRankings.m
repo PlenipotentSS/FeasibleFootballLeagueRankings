@@ -17,7 +17,6 @@
 ///results of all games played
 @property (nonatomic, strong) NSMutableArray *gameResults;
 
-
 ///results of all games played
 @property (nonatomic, strong) NSMutableArray *currentRankings;
 
@@ -47,50 +46,62 @@
         //games by line
         NSArray *games = [content componentsSeparatedByString:@"\n"];
         for( NSString *game in games) {
-            NSArray *teamAndScores = [game componentsSeparatedByString:@", "];
-            NSMutableArray *teams = [[NSMutableArray alloc] initWithCapacity:2];
-            NSMutableArray *scores = [[NSMutableArray alloc] initWithCapacity:2];
-            
-            //teams for each game
-            for (NSString *homeAndAway in teamAndScores) {
-                NSArray *teamComponents = [homeAndAway componentsSeparatedByString:@" "];
-                NSString *name;
+            if (game.length > 0) {
+                NSArray *teamAndScores = [game componentsSeparatedByString:@", "];
+                NSMutableArray *teams = [[NSMutableArray alloc] initWithCapacity:2];
+                NSMutableArray *scores = [[NSMutableArray alloc] initWithCapacity:2];
                 
-                //keep white space if it is contained in name
-                if ( [teamComponents count] > 2) {
-                    NSRange range;
-                    range.location = 0;
-                    range.length = [teamComponents count]-1;
+                //teams for each game
+                for (NSString *homeAndAway in teamAndScores) {
+                    NSArray *teamComponents = [homeAndAway componentsSeparatedByString:@" "];
+                    NSString *name;
                     
-                    NSArray *nameComponents = [teamComponents subarrayWithRange:range];
-                    name = [nameComponents componentsJoinedByString:@" "];
-                } else {
-                    name = teamComponents[0];
+                    //keep white space if it is contained in name
+                    if ( [teamComponents count] > 2) {
+                        NSRange range;
+                        range.location = 0;
+                        range.length = [teamComponents count]-1;
+                        
+                        NSArray *nameComponents = [teamComponents subarrayWithRange:range];
+                        name = [nameComponents componentsJoinedByString:@" "];
+                    } else {
+                        name = teamComponents[0];
+                    }
+                    NSInteger score = [teamComponents[[teamComponents count]-1] integerValue];
+                    
+                    //see if we have team in dictionary
+                    Team *thisTeam = [self.teams objectForKey:name];
+                    if (!thisTeam) {
+                        thisTeam = [[Team alloc] initWithName:name];
+                        [self.teams setObject:thisTeam forKey:name];
+                    }
+                    
+                    //prepare teams and scores to game
+                    [teams addObject:thisTeam];
+                    [scores addObject:@(score)];
                 }
-                NSInteger score = [teamComponents[[teamComponents count]-1] integerValue];
                 
-                //see if we have team in dictionary
-                Team *thisTeam = [self.teams objectForKey:name];
-                if (!thisTeam) {
-                    thisTeam = [[Team alloc] initWithName:name];
-                    [self.teams setObject:thisTeam forKey:name];
-                }
-                
-                //prepare teams and scores to game
-                [teams addObject:thisTeam];
-                [scores addObject:@(score)];
+                //add teams and scores to this game
+                Game *thisGame = [[Game alloc] initWithHomeTeam:teams[0] andAwayTeam:teams[1]];
+                [thisGame updateGameTeamsAndGetResultWithHomeScore:[scores[0] integerValue] andAwayScore:[scores[1] integerValue]];
+                [self.gameResults addObject:thisGame];
             }
-            
-            //add teams and scores to this game
-            Game *thisGame = [[Game alloc] initWithHomeTeam:teams[0] andAwayTeam:teams[1]];
-            [thisGame updateGameTeamsAndGetResultWithHomeScore:[scores[0] integerValue] andAwayScore:[scores[1] integerValue]];
-            [self.gameResults addObject:thisGame];
         }
         
         return YES;
     } else {
         return NO;
     }
+}
+
+- (NSInteger)totalTeams
+{
+    return [[self.teams allKeys] count];
+}
+
+- (NSInteger)totalRankings
+{
+    return [self.currentRankings count];
 }
 
 - (void)calculateRankings
@@ -126,12 +137,40 @@
     }
 }
 
-- (void)printSeasonRankings
+- (char*)getSeasonRankings
 {
-    NSString *result = @"";
+    NSString *result = [self getResultsInString];
+    
+    // an issue with char is having enough bytes...
+    // converting utf8 string to larger char (using 64 here)
+    char cString [result.length*64];
+    return strcpy(cString, result.UTF8String);
+}
+
+- (BOOL)saveRankingsToFile:(NSString *)savedPathString
+{
+    NSString *result = [self getResultsInString];
+    
+    
+    savedPathString = [savedPathString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+    
+    NSError *err;
+    [result writeToFile:savedPathString atomically:TRUE encoding:NSUTF8StringEncoding error:&err];
+    if (err) {
+        return NO;
+    }
+    
+    return YES;
+}
+
+/*
+ *  Helpers
+ */
+- (NSString*) getResultsInString{
     NSInteger rank = 1;
     NSInteger previousScore = 0;
     NSInteger skippedRanks = 0;
+    NSString *result = @"";
     for (Team *ranking in self.currentRankings) {
         NSInteger thisTeamsScore = [ranking currentRankedScore];
         if (previousScore == thisTeamsScore) {
@@ -149,15 +188,7 @@
         previousScore = thisTeamsScore;
         rank++;
     }
-    NSLog(@"\n%@",result);
+    return result;
 }
-
-- (BOOL)saveRankingsToFile:(NSString *)savedPathString
-{
-    savedPathString = [savedPathString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-    return NO;
-}
-
-
 
 @end

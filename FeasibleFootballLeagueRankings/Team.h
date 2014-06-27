@@ -10,22 +10,22 @@
 
 @interface Team : NSObject
 
-/// current name of team
+/// Current name of team
 @property (nonatomic, strong) NSString *name;
 
-/// games won for this team
+/// Games won for this team
 @property (nonatomic) NSInteger gamesWon;
 
-/// games tied for this team
+/// Games tied for this team
 @property (nonatomic) NSInteger gamesTied;
 
-/// games lost for this team
+/// Games lost for this team
 @property (nonatomic) NSInteger gamesLost;
 
-/// convenience initializer for name
+/// Convenience initializer for name
 -(instancetype)initWithName:(NSString*)name;
 
-///computed score for team
+/// Computed score for team
 - (NSInteger)currentRankedScore;
 
 @end

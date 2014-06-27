@@ -159,7 +159,7 @@ __attribute__((visibility("default"))) @interface FeasibleFootballLeagueRankings
     XCTAssertEqual([self.teamA currentRankedScore], [firstMatch.homeTeam currentRankedScore], @"home team and teamA (referened as home) should have same score after match");
     XCTAssertEqual([self.teamA currentRankedScore], [firstMatch.homeTeam currentRankedScore], @"away team and teamB (referened as away) should have same score after match");
     
-    XCTAssertNotEqual([self.teamA currentRankedScore], initialHomeScore, @"Home team score should be different after a game without a tie");
+    XCTAssertEqual([self.teamA currentRankedScore], 3+initialHomeScore, @"Home team score should be 3 points more");
     XCTAssertEqual([self.teamB currentRankedScore], initialAwayScore, @"Away Team should have same score with a loss");
     
     XCTAssertTrue([self.teamA currentRankedScore] > [self.teamB currentRankedScore], @"Home Team should have higher score over away team");
@@ -196,6 +196,43 @@ __attribute__((visibility("default"))) @interface FeasibleFootballLeagueRankings
     NSString* testPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"SampleInput" ofType:@"txt"];
     BOOL trueRead = [season didProcessGamesFromPathString:testPath];
     XCTAssertTrue(trueRead, @"season should return true if file path has expected file");
+}
+
+- (void)testRankingsWithDifferentLists
+{
+    NSString* testPath1 = [[NSBundle bundleForClass:[self class]] pathForResource:@"SmallSampleData" ofType:@"txt"];
+    [self testRankingsWithPath:testPath1];
+    
+    NSString* testPath2 = [[NSBundle bundleForClass:[self class]] pathForResource:@"SampleInput" ofType:@"txt"];
+    [self testRankingsWithPath:testPath2];
+    
+    NSString* testPath3 = [[NSBundle bundleForClass:[self class]] pathForResource:@"BigSampleInput" ofType:@"txt"];
+    [self testRankingsWithPath:testPath3];
+}
+
+- (void)testRankingsWithPath:(NSString*)path
+{
+    SeasonRankings *season = [[SeasonRankings alloc] init];
+    
+    BOOL trueRead = [season didProcessGamesFromPathString:path];
+    XCTAssertTrue(trueRead, @"season should return true if file path has expected file");
+    XCTAssertNotEqual([season totalTeams], 0, @"Total teams should not be 0 after processing file");
+    XCTAssertTrue([season totalRankings] == 0, @"total rankings before getting rankings should be 0");
+    
+    char* preResults = [season getSeasonRankings];
+    XCTAssertTrue(strlen(preResults) == 0, @"results of rankings should have empty char before calculating rankings");
+    
+    [season calculateRankings];
+    
+    char* postResults = [season getSeasonRankings];
+    XCTAssertFalse(strlen(postResults) == 0, @"results of rankings should not be nil after updating games");
+    XCTAssertTrue([season totalRankings] == [season totalTeams], @"total rankings after getting rankings should be same as number of teams");
+    
+    NSString *savePath = @"savingTestFile.txt";
+    BOOL trueWrite = [season saveRankingsToFile:savePath];
+    XCTAssertTrue(trueWrite, @"rankings should be able to write to file");
+    NSError *error;
+    [[NSFileManager defaultManager] removeItemAtPath:savePath error:&error];
 }
 
 @end

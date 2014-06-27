@@ -45,7 +45,7 @@ int main(int argc, const char * argv[])
             printf("would you like me to print results (Y/N)?");
             fgets(printYesNo, 3, stdin);
             if (printYesNo[0] == 'Y' || printYesNo[0] == 'y') {
-                [season printSeasonRankings];
+                printf("%s", [season getSeasonRankings] );
             } else if (printYesNo[0] != 'N' && printYesNo[0] != 'n') {
                 printf("huh?");
             }

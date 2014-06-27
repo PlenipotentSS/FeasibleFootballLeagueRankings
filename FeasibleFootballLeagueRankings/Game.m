@@ -29,6 +29,7 @@
     return self;
 }
 
+//Convenience Initialize to add both home and away teams
 - (instancetype)initWithHomeTeam:(Team *)homeTeam andAwayTeam:(Team *)awayTeam
 {
     self = [super init];
