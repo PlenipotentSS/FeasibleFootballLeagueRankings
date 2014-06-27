@@ -9,3 +9,7 @@ The second build is a command line application stored in /usr/local/bin/Feasible
 This second build can be run from command line and is more appropriate for access local files.
 
 Rooms for improvement: The application can easily be converted to full command line tool that inputs the reading and writing files paths in a single line. For testing and showcasing purposes, I decided to keep the command line interaction.
+
+Known Bugs:
+
+1. Some Rankings do not print correctly in terminal. This is due to a lack of precision when converting ``NSString`` to ``char *``. However, rankings print perfectly when saved to file.
