@@ -11,16 +11,15 @@
 
 #define MAX_CHAR_SIZE 1024
 
-int main(int argc, const char * argv[])
+int runUI(void)
 {
-
     @autoreleasepool {
-        
-        char str[MAX_CHAR_SIZE] = ""; bool pathFound = false; bool exitApp = false;
         SeasonRankings *season;
+        char str[MAX_CHAR_SIZE] = ""; bool pathFound = false; bool exitApp = false;
+        char saveYesNo[3] = "";
         
         while (!exitApp) {
-            char printYesNo[3] = ""; char saveYesNo[3] = ""; char leave[3] = "";
+            char printYesNo[3] = ""; char leave[3] = "";
             
             //get file path
             while (!pathFound) {
@@ -59,7 +58,7 @@ int main(int argc, const char * argv[])
                 fgets(savePath, MAX_CHAR_SIZE, stdin);
                 
                 if ([season saveRankingsToFile:[NSString stringWithUTF8String:savePath]]) {
-                    printf("Success!");
+                    printf("Success!\n");
                 } else {
                     printf("uh oh... There was an error writing to that path...");
                 }
@@ -75,6 +74,57 @@ int main(int argc, const char * argv[])
             } else if (leave[0] == 'R' || leave[0] == 'r') {
                 pathFound = false;
             }
+        }
+    }
+    return 0;
+}
+
+
+int main(int argc, const char * argv[])
+{
+    @autoreleasepool {
+        SeasonRankings *season;
+        char saveYesNo[3] = "";
+        
+        if (argc > 3) {
+            return 0;
+        } else if ( argc >= 2 ) {
+            season = [[SeasonRankings alloc] init];
+            
+            //process first argument
+            if ( [season didProcessGamesFromPathString:[NSString stringWithUTF8String:argv[1]]]) {
+                printf("Successfully Processed Games!\n");
+                [season calculateRankings];
+            } else {
+                printf("There was an error with that file or filepath, please check again \n\n");
+                return 0;
+            }
+            
+            //process second argument if exists
+            if (argc == 3) {
+                if ([season saveRankingsToFile:[NSString stringWithUTF8String:argv[2]]]) {
+                    printf("Success!\n");
+                } else {
+                    printf("uh oh... There was an error writing to that path...");
+                }
+            } else {
+                printf("would you like me to save results (Y/N)?\n");
+                fgets(saveYesNo, 3, stdin);
+                if (saveYesNo[0] == 'Y' || saveYesNo[0] == 'y') {
+                    char savePath[MAX_CHAR_SIZE] = "";
+                    printf("Where would you like me to save it?");
+                    fgets(savePath, MAX_CHAR_SIZE, stdin);
+                    
+                    if ([season saveRankingsToFile:[NSString stringWithUTF8String:savePath]]) {
+                        printf("Success!");
+                    } else {
+                        printf("uh oh... There was an error writing to that path...");
+                    }
+                }
+            }
+        } else {
+            //run command line interface
+            return runUI();
         }
     }
     return 0;
