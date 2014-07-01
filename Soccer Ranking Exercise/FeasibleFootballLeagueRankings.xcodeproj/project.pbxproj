@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D28349C3196339F600FE2A86 /* FeasibleFootballRankingsTeam_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = D28349C2196339F600FE2A86 /* FeasibleFootballRankingsTeam_Tests.m */; };
+		D28349C519633AEF00FE2A86 /* FeasibleFootballRankingsGames_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = D28349C419633AEF00FE2A86 /* FeasibleFootballRankingsGames_Tests.m */; };
 		D2ECF01A195C96860047C831 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2ECF019195C96860047C831 /* Foundation.framework */; };
 		D2ECF01D195C96860047C831 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D2ECF01C195C96860047C831 /* main.m */; };
 		D2ECF021195C96860047C831 /* FeasibleFootballLeagueRankings.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = D2ECF020195C96860047C831 /* FeasibleFootballLeagueRankings.1 */; };
@@ -48,6 +50,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D28349C2196339F600FE2A86 /* FeasibleFootballRankingsTeam_Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeasibleFootballRankingsTeam_Tests.m; sourceTree = "<group>"; };
+		D28349C419633AEF00FE2A86 /* FeasibleFootballRankingsGames_Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeasibleFootballRankingsGames_Tests.m; sourceTree = "<group>"; };
 		D2ECF016195C96860047C831 /* FeasibleFootballLeagueRankings */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = FeasibleFootballLeagueRankings; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2ECF019195C96860047C831 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D2ECF01C195C96860047C831 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -175,6 +179,8 @@
 			isa = PBXGroup;
 			children = (
 				D2ECF077195C9D200047C831 /* FeasibleFootballLeagueRankings_Tests.m */,
+				D28349C2196339F600FE2A86 /* FeasibleFootballRankingsTeam_Tests.m */,
+				D28349C419633AEF00FE2A86 /* FeasibleFootballRankingsGames_Tests.m */,
 				D2ECF072195C9D200047C831 /* Supporting Files */,
 			);
 			path = "FeasibleFootballLeagueRankings Tests";
@@ -291,7 +297,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2ECF09F195D4D2B0047C831 /* Team.m in Sources */,
+				D28349C3196339F600FE2A86 /* FeasibleFootballRankingsTeam_Tests.m in Sources */,
 				D2ECF09E195D4D260047C831 /* SeasonRankings.m in Sources */,
+				D28349C519633AEF00FE2A86 /* FeasibleFootballRankingsGames_Tests.m in Sources */,
 				D2ECF09D195D4D220047C831 /* Game.m in Sources */,
 				D2ECF078195C9D200047C831 /* FeasibleFootballLeagueRankings_Tests.m in Sources */,
 			);

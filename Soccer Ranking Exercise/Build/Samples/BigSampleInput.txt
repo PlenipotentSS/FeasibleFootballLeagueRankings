@@ -1,0 +1,92 @@
+Lionss 3 , Snakess 3 
+Tarantulas-As 1, FC Awesome-A 0
+Lions-As 1, FC Awesome-As 1
+Tarantulass 3 , Snakes-As 1
+Lionss 4, Grouches-A 0
+Cheese Burger-As 10, Pancakes-A 0
+Heavy Pizza 9, Tortillas-As 11
+Morality-A 0, Insanity-A 0
+Swing Dancinged 2, Jitterbuged 2
+Jitterbug-A 0, Lindy Hoply 5
+Lions-Bs 3 , Snakess 3 
+Tarantulas-C-As 1, FC Awesome-A 0
+Lions-A-As 1, FC Awesome-As 1
+Tarantulas-Ds 3 , Snakes-As 1
+Lionss 4, Grouches-O-A 0
+Cheese Burger-A-As 10, Pancakes-B-A 0
+Heavy Pizza-P 9, Tortillas-As 11
+Morality-P-A 0, Insanity-O-A 0
+Swing Dancersed 2, Jitterbuggersed 2
+Jitterbugging-A 0, Lindy Hoppersly 5
+Apples-A 0, Bananas-A 0
+Bananas-As 1, Cherries-As 1
+Beanstalk-Aly 5, Cabbage-Aly 5
+Lions-As 3 , Snakes-As 3 
+Tarantulas-As 1, FC Awesome-A 0
+Lions-As 1, FC Awesome-As 1
+Tarantulass 3 , Snakes-As 1
+Lionss 4, Grouches-A 0
+Cheese Burger-As 10, Pancakes-A 0
+Heavy Pizza 9, Tortillas-As 11
+Morality-A 0, Insanity-A 0
+Swing Dancinged 2, Jitterbuged 2
+Jitterbug-A 0, Lindy Hoply 5
+Lions-Bs 3 , Snakess 3 
+Tarantulas-C-As 1, FC Awesome-A 0
+Lions-A-As 1, FC Awesome-As 1
+Tarantulas-Ds 3 , Snakes-As 1
+Lionss 4, Grouches-O-A 0
+Cheese Burger-A-As 10, Pancakes-B-A 0
+Heavy Pizza-P 9, Tortillas-As 11
+Morality-P-A 0, Insanity-O-A 0
+Swing Dancersed 2, Jitterbuggersed 2
+Jitterbugging-A 0, Lindy Hoppersly 5
+Apples-A 0, Bananas-A 0
+Bananas-As 1, Cherries-As 1
+Beanstalkly 5, Cabbagely 5
+Lions 3, Snakes 3
+Tarantulas-A 1, FC Awesome-A 0
+Lions-A 1, FC Awesome-A 1
+Tarantulas 3, Snakes-A 1
+Lions 4, Grouches-A 0
+Cheese Burger-A 10, Pancakes-A 0
+Heavy Pizza 9, Tortillas-A 11
+Morality-A 0, Insanity-A 0
+Swing Dancing 2, Jitterbug 2
+Jitterbug-A 0, Lindy Hop 5
+Lions-B 3, Snakes 3
+Tarantulas-C-A 1, FC Awesome-A 0
+Lions-A-A 1, FC Awesome-A 1
+Tarantulas-D 3, Snakes-A 1
+Lions 4, Grouches-O-A 0
+Cheese Burger-A-A 10, Pancakes-B-A 0
+Heavy Pizza-P 9, Tortillas-A 11
+Morality-P-A 0, Insanity-O-A 0
+Swing Dancers 2, Jitterbuggers 2
+Jitterbugging-A 0, Lindy Hoppers 5
+Apples-A 0, Bananas-A 0
+Bananas-A 1, Cherries-A 1
+Beanstalk-A 5, Cabbage-A 5
+Lions-A 3, Snakes-A 3
+Tarantulas-A 1, FC Awesome-A 0
+Lions-A 1, FC Awesome-A 1
+Tarantulas 3, Snakes-A 1
+Lions 4, Grouches-A 0
+Cheese Burger-A 10, Pancakes-A 0
+Heavy Pizza 9, Tortillas-A 11
+Morality-A 0, Insanity-A 0
+Swing Dancing 2, Jitterbug 2
+Jitterbug-A 0, Lindy Hop 5
+Lions-B 3, Snakes 3
+Tarantulas-C-A 1, FC Awesome-A 0
+Lions-A-A 1, FC Awesome-A 1
+Tarantulas-D 3, Snakes-A 1
+Lions 4, Grouches-O-A 0
+Cheese Burger-A-A 10, Pancakes-B-A 0
+Heavy Pizza-P 9, Tortillas-A 11
+Morality-P-A 0, Insanity-O-A 0
+Swing Dancers 2, Jitterbuggers 2
+Jitterbugging-A 0, Lindy Hoppers 5
+Apples-A 0, Bananas-A 0
+Bananas-A 1, Cherries-A 1
+Beanstalk 5, Cabbage 5

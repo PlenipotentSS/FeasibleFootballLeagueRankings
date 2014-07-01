@@ -67,6 +67,16 @@
             ReferencedContainer = "container:FeasibleFootballLeagueRankings.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <CommandLineArguments>
+         <CommandLineArgument
+            argument = "/Users/plenipotence/Dropbox/Laptop\ Files/Desktop/SampleInput.txt"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "/Users/plenipotence/Dropbox/Laptop\ Files/Desktop/SampleOutput.txt"
+            isEnabled = "YES">
+         </CommandLineArgument>
+      </CommandLineArguments>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
