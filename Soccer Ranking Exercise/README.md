@@ -4,12 +4,21 @@ A Command Line tool that utilizes games stored in a well-formed text file and co
 
 There are two current builds in this repo. The Xcode project is dependent on xcode to run. This is the testing environment that utilizes XCTest class to unit test the different models of this project.
 
-The second build is a command line application stored in /usr/local/bin/FeasibleFootballLeagueRankings
+The executable build is a command line application stored in /Build/fflr
 
-This second build can be run from command line and is more appropriate for access local files.
+To use the executable build:
 
-Rooms for improvement: The application can easily be converted to full command line tool that inputs the reading and writing files paths in a single line. For testing and showcasing purposes, I decided to keep the command line interaction.
+from containing directory:
+
+```bash
+
+	$ ./fflr [ARG 1] [ARG 2]
+```
+
+ - [ARG 1] is the path to the input file
+ - [ARG 2] is the path to the output file (overwrites file at path by default)
+
 
 Known Bugs:
 
-1. Some Rankings do not print correctly in terminal. This is due to a lack of precision when converting ``NSString`` to ``char *``. However, rankings print perfectly when saved to file.
+1. Some Rankings do not print correctly in terminal with terminal interface. This is due to a lack of precision when converting ``NSString`` to ``char *``. However, rankings print perfectly when saved to file.
